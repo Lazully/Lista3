@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Lista3
 {
@@ -9,17 +9,21 @@ namespace Lista3
             int op;
 
             Console.WriteLine(" ============ Lista 3 - Arrays, Listas e Métodos ============");
+            #region Escolha
 
             Console.WriteLine($"{Environment.NewLine}Escolha o exercício que você quer ver: {Environment.NewLine}" +
                 $"1. A {Environment.NewLine}" + //feito
-                $"2. B {Environment.NewLine}" +
-                $"3. C {Environment.NewLine}" +
-                $"4. (Exercício 1) {Environment.NewLine}" +
+                $"2. B {Environment.NewLine}" + //feito
+                $"3. C {Environment.NewLine}" + //feito
+                $"4. (Exercício 1) {Environment.NewLine}" + //feito
                 $"5. (Exercício 2) {Environment.NewLine}" + //feito
                 $"6. (Exercício 3) {Environment.NewLine}" +
                 $"7. (Exercício 4) {Environment.NewLine}" +
-                $"8. (Exercício 5) {Environment.NewLine}");
+                $"8. (Exercício 5) {Environment.NewLine}" +
+                $"9. (Exercício 6) {Environment.NewLine}" +
+                $"10. Exemplo de inverter ordem do vetor. ");
             op = Convert.ToInt32(Console.ReadLine());
+            #endregion
 
             switch (op)
             {
@@ -52,6 +56,15 @@ namespace Lista3
                 case 8:
                     break;
                 case 9:
+                    break;
+
+                case 10: //exemplo
+                    Console.WriteLine("Entre com uma frase ou palavra: ");
+                    var invertido = Console.ReadLine().ToCharArray();
+                    InverterOrdemFast(invertido);
+
+                    for (int i = 0; i < invertido.Length; i++)
+                        Console.Write(invertido[i]);
                     break;
             }
             Console.WriteLine($"{Environment.NewLine}Aperte qualquer tecla para encerrar o programa. ");
@@ -97,6 +110,7 @@ namespace Lista3
             }
             return vetorEntradas;
         }
+
         public static void ImprimirEntradas(int[] arrayNumeros)
         {
             for (int i = 0; i < arrayNumeros.Length; i++)
@@ -142,7 +156,8 @@ namespace Lista3
             }
             return recebeValor;
         }
-        //Exercício 2 - case 5
+
+        //Exercício 2 - case 5 (reutilizável no exercíco 4)
         public static int[] LerMatriculas(int num)
         {
             Console.Clear();
@@ -172,6 +187,7 @@ namespace Lista3
             }
             return Existente;
         }
+
         //exercício 3 - case 6 não consegui fazer.
         public static int[] LerExercicio3()
         {
@@ -185,6 +201,7 @@ namespace Lista3
 
             return vetorLer;
         }
+
         private static void If999(int[] tam)
         {
             int lerAuxiliar;
@@ -195,6 +212,32 @@ namespace Lista3
                 lerAuxiliar = Convert.ToInt32(Console.ReadLine());
                 int[] vetAux = new int[lerAuxiliar];
             }
+        }
+
+        //inverter a ordem de um vetor
+        public static char InverterOrdem(char[] vetorChar)
+        {
+            char[] vetorRetorno = new char[vetorChar.Lenght];
+
+            for (int i = vetorChar.Lenght - 1; i >= 0; i--)
+            {
+                vetorRetorno[(vetorChar.Lenght-1) - i] = vetorChar[i];
+            }
+            return vetorRetorno;
+        }
+
+        public static void InverterOrdemFast(char[] vetorChar) //gasta metade de memória RAM em relação ao Inverter Ordem
+        {
+            char[] vetorRetorno = new char[vetorChar.Lenght];
+
+            for (int i = 0; i < vetorChar.Length/2; i++)
+            {
+                int indexOposto = (vetorChar.Length - 1) - i;
+                char aux = vetorChar[i];
+                vetorChar[i] = vetorChar[indexOposto];
+                vetorChar[indexOposto] = aux;
+            }
+            
         }
 
     }
