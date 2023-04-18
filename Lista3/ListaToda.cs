@@ -48,8 +48,28 @@ namespace Lista3
                     ImprimirNumeros(array5);
                     break;
                 case 6:
-                    int[] array6 = LerExercicio3();
-                    If999(array6);
+                    int numero = 0;
+                    int[] dados = new int[100];
+                    int count = 0;
+                    do
+                    {
+                        Console.WriteLine("Entre com um valor: ");
+                        int numero = Convert.ToInt32(Console.ReadLine());
+                        dados[count] = numero;
+                        count++;
+                    } while (numero != 999);
+
+                    count--;
+                    char[] vetorInvertido = new char[count];
+
+                    for (int i = count - 1; i >= 0; i--)
+                    {
+                        vetorInvertido[(count -1 ) - i] = dados[i];
+                    }
+
+                    foreach (var num in vetorInvertido)
+                        Console.WriteLine(num);
+
                     break;
                 case 7:
                     break;
