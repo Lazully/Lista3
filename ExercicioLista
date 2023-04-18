@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+
+namespace Listas
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int tam = 10;
+            List<double> pares = new List<double>() { 2,4,6,8,10};
+            ImprimirLista(pares);
+            Console.WriteLine("pares.RemoveAt(1)");
+            pares.RemoveAt(1);
+            Console.WriteLine("pares.RemoveAt(8)");
+            pares.RemoveAt(8);
+            Console.WriteLine("pares.RemoveAt(8)");
+            pares.RemoveAt(8);
+
+            ImprimirLista(pares);
+
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Remove Inicio Index [0]");
+                    pares.RemoveAt(0);
+                    ImprimirLista(pares);
+                    Console.ReadKey();
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("Lista vazia");
+                    break;
+                }
+            }
+        }
+
+        public static void ImprimirLista(List <double> lista)
+        {
+            int i = 0;
+            foreach(var valor in lista)
+            {
+                Console.WriteLine($"[{i}]: {valor}");
+                i++;
+            }
+        }
+    }
+}
