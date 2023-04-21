@@ -54,17 +54,17 @@ namespace Lista3
                     do
                     {
                         Console.WriteLine("Entre com um valor: ");
-                        int numero = Convert.ToInt32(Console.ReadLine());
+                        numero = Convert.ToInt32(Console.ReadLine());
                         dados[count] = numero;
                         count++;
                     } while (numero != 999);
 
                     count--;
-                    char[] vetorInvertido = new char[count];
+                    int[] vetorInvertido = new int[count];
 
                     for (int i = count - 1; i >= 0; i--)
                     {
-                        vetorInvertido[(count -1 ) - i] = dados[i];
+                        vetorInvertido[(count - 1) - i] = dados[i];
                     }
 
                     foreach (var num in vetorInvertido)
@@ -72,6 +72,9 @@ namespace Lista3
 
                     break;
                 case 7:
+                    Console.WriteLine("Abaixo, informe a matrícula dos alunos: ");
+                    int[] array7 = LerMatriculas(10);
+
                     break;
                 case 8:
                     break;
@@ -148,7 +151,7 @@ namespace Lista3
             Console.WriteLine($"Informe quantos valores você quer gerar aleatóriamente: ");
             qtdEntrada = Convert.ToInt32(Console.ReadLine());
 
-            int[] vetorLer = new int [qtdEntrada];
+            int[] vetorLer = new int[qtdEntrada];
 
             return vetorLer;
         }
@@ -159,19 +162,19 @@ namespace Lista3
             for (int i = 0; i < arrayAleatorio.Length; i++)
             {
                 int numero = r.Next(0, 100);//gera um numero aleatório no intervalo entre 0 e 100
-                Console.WriteLine($"Valores gerados aleatóriamente: {Environment.NewLine}{i+1}º: {numero}");
+                Console.WriteLine($"Valores gerados aleatóriamente: {Environment.NewLine}{i + 1}º: {numero}");
             }
         }
-       
+
         //Exercício 1 - case 4
         public static int[] LerDezVetores(int num = 10)
         {
             Console.Clear();
             int[] recebeValor = new int[num];
 
-            for(int i = 0; i < num; i++)
+            for (int i = 0; i < num; i++)
             {
-                Console.WriteLine($"Entre com o vetor {i + 1}: ");
+                Console.WriteLine($"Entre com o valor {i + 1}: ");
                 recebeValor[i] = Convert.ToInt32(Console.ReadLine());
             }
             return recebeValor;
@@ -226,7 +229,7 @@ namespace Lista3
         {
             int lerAuxiliar;
             Random r = new Random(DateTime.Now.Millisecond);
-            for (int i = 0; i<tam.Length-1; i++)
+            for (int i = 0; i < tam.Length - 1; i++)
             {
                 Console.WriteLine($"Escreva um valor para a posição {i + 1}");
                 lerAuxiliar = Convert.ToInt32(Console.ReadLine());
@@ -235,30 +238,32 @@ namespace Lista3
         }
 
         //inverter a ordem de um vetor
-        public static char InverterOrdem(char[] vetorChar)
+        public static char[] InverterOrdem(char[] vetorChar)
         {
-            char[] vetorRetorno = new char[vetorChar.Lenght];
+            char[] vetorRetorno = new char[vetorChar.Length];
 
-            for (int i = vetorChar.Lenght - 1; i >= 0; i--)
+            for (int i = vetorChar.Length - 1; i >= 0; i--)
             {
-                vetorRetorno[(vetorChar.Lenght-1) - i] = vetorChar[i];
+                vetorRetorno[(vetorChar.Length - 1) - i] = vetorChar[i];
             }
             return vetorRetorno;
         }
 
         public static void InverterOrdemFast(char[] vetorChar) //gasta metade de memória RAM em relação ao Inverter Ordem
         {
-            char[] vetorRetorno = new char[vetorChar.Lenght];
+            char[] vetorRetorno = new char[vetorChar.Length];
 
-            for (int i = 0; i < vetorChar.Length/2; i++)
+            for (int i = 0; i < vetorChar.Length / 2; i++)
             {
                 int indexOposto = (vetorChar.Length - 1) - i;
                 char aux = vetorChar[i];
                 vetorChar[i] = vetorChar[indexOposto];
                 vetorChar[indexOposto] = aux;
             }
-            
+
         }
+        
+
 
     }
 }
