@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 
 namespace Lista3
 {
@@ -77,6 +78,8 @@ namespace Lista3
 
                     break;
                 case 8:
+                    Console.Clear();
+                    NotasProvas();
                     break;
                 case 9:
                     break;
@@ -262,7 +265,59 @@ namespace Lista3
             }
 
         }
-        
+
+        //ler 3 notas e colocar em vetor - case 8
+
+        public static void NotasProvas() {
+
+            Console.WriteLine("Entre com numero de alunos");
+            int numAlunos = Convert.ToInt32(Console.ReadLine());
+
+            int[] MediasAlunos = new int[numAlunos];
+            for (int i = 0; i < numAlunos; i++)
+            {
+                MediasAlunos[i] = MediaProvas();
+            }
+
+            for (int i = 0; i < numAlunos; i++)
+            {
+                Console.WriteLine($"Aluno {i}{Environment.NewLine} Nota: {MediasAlunos[i]}");
+            }
+
+           
+        }
+        public static int MediaProvas()
+        {
+            Console.WriteLine("Insira as notas conforme pedido.");
+
+            int[] notas = new int[3];
+            int media = 0;
+            for(int i = 0; i < 2; i++)
+            {
+                Console.WriteLine($"Entre com a nota {i + 1}: ");
+                notas[i] = Convert.ToInt32(Console.ReadLine());
+
+              
+            }
+            media = (notas[0] + notas[1]) / 2;
+            if (media > 5)
+                Console.WriteLine("Aprovado! ");
+            else
+                Console.WriteLine("Reprovado! ");
+            return media;
+           
+
+            //for (int j = 0; j == 2; j++)
+            //{
+            //    float media = guardaNota / 2;
+            //    if (media > 5)
+            //    {
+            //        Console.WriteLine("Aprovado! ");
+            //    }
+            //    else
+            //        Console.WriteLine("Reprovado! ");
+            //}
+        }
 
 
     }
