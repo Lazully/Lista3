@@ -28,27 +28,27 @@ namespace Lista3
 
             switch (op)
             {
-                case 1:
+                case 1:     //feito
                     int[] array = LerNumeros(4, "Entre com nota da Prova1:");
                     ImprimirNumeros(array);
                     break;
-                case 2:
+                case 2:     //feito
                     int[] array2 = LerEntradas();//não sei oq coloca dentro do parenteses
                     ImprimirEntradas(array2);
                     break;
-                case 3:
+                case 3:     //feito
                     int[] array3 = LerAleatorio();
                     ImprimirAleatorio(array3);
                     break;
-                case 4:
+                case 4:     //feito
                     int[] array4 = LerDezVetores(10);
                     ImprimirEntradas(array4);
                     break;
-                case 5:
+                case 5:     //feito
                     int[] array5 = LerMatriculas(10);
                     ImprimirNumeros(array5);
                     break;
-                case 6:
+                case 6:     //feito
                     int numero = 0;
                     int[] dados = new int[100];
                     int count = 0;
@@ -72,16 +72,19 @@ namespace Lista3
                         Console.WriteLine(num);
 
                     break;
-                case 7:
+                case 7:     //feito
                     Console.WriteLine("Abaixo, informe a matrícula dos alunos: ");
                     int[] array7 = LerMatriculas(10);
 
                     break;
-                case 8:
+                case 8: //feito
                     Console.Clear();
                     NotasProvas();
                     break;
                 case 9:
+                    Console.Clear();
+                    int[] array9 = LerDezVetores(10);
+                    SomaImpar(array9);
                     break;
 
                 case 10: //exemplo
@@ -319,7 +322,22 @@ namespace Lista3
             //}
         }
 
+        //soma impar
+        public static void SomaImpar(int[] recebeValor)
+        {
+            int[] vetorAux = new int[recebeValor.Length];
+            int i = 0, j = 0;
+            int[] somaImpar = new int[10];
 
+            for (i = 0; i <= 10; i++)
+            {
+                if (vetorAux[i] % 2 == 1 && vetorAux[i] <= 10)
+                {
+                    somaImpar[j] += vetorAux[i];//soma = soma + contaN
+                }
+            }
+            Console.WriteLine($"{Environment.NewLine}Soma dos ímpares: {somaImpar}");
+        }
     }
 }
 
